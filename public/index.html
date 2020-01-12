@@ -10,14 +10,17 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="stylesheet" href="AdminLte/plugins/fontawesome-free/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="/AdminLte/plugins/fontawesome-free/css/all.min.css"
+    />
     <!-- Ionicons -->
     <link
       rel="stylesheet"
       href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
     <!-- Theme style -->
-    <link rel="stylesheet" href="AdminLTE/css/adminlte.min.css" />
+    <link rel="stylesheet" href="/AdminLTE/css/adminlte.min.css" />
     <!-- Google Font: Source Sans Pro -->
     <link
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -37,12 +40,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Baisc Pos</title>
+    <base href="/" />
+    <title>Basic POS</title>
   </head>
-  <body class="hold-transition login-page">
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
-    <div className="wrapper"><div id="root"></div></div>
+    <div class="wrapper"><div id="root"></div></div>
 
     <!--
       This HTML file is a template.
@@ -55,10 +59,10 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- jQuery -->
-    <script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
+    <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="AdminLTE/js/adminlte.min.js"></script>
+    <script src="/AdminLTE/js/adminlte.min.js"></script>
   </body>
 </html>

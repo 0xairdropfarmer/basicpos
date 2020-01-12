@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class Dashboard extends Component {
   render() {
-    return (<div className="content-wrapper">
+    return (
+    <div className="content-wrapper">
   {/* Content Header (Page header) */}
   <div className="content-header">
     <div className="container-fluid">

@@ -20,9 +20,22 @@ class Login extends Component {
       alert: null
     };
   }
+  componentDidMount() {
+    if (localStorage.getItem("TOKEN_KEY") != null) {
+      return this.props.history.push('/dashboard');
+    }
+    let notify = this.props.match.params["notify"]
+    if(notify !== undefined){
+      if(notify == 'error'){
+        swal("Activation Fail please try again !", '', "error")
+      }else if(notify == 'success'){
+        swal("Activation Success your can login !", '', "success")
+      }
+     
+    }
+  }
 
   submitForm = (values, history) => {
-    console.log(values);
     axios
       .post("http://localhost:8080/login", values)
       .then(res => {
@@ -37,7 +50,7 @@ class Login extends Component {
       })
       .catch(error => {
         console.log(error);
-        swal("Error!", error, "error");
+        return swal("Error!", error.message, "error");
       });
   };
   showForm = ({
@@ -124,40 +137,42 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="register-box">
-        <div className="register-logo">
-          <a href="../../index2.html">
-            <b>Basic</b>POS
-          </a>
-        </div>
-        <div className="card">
-          <div className="card-body register-card-body">
-            <p className="login-box-msg">Sign in to start your session</p>
-
-            <Formik
-              initialValues={{
-                username: "",
-                password: ""
-              }}
-              onSubmit={(values, { setSubmitting }) => {
-                this.submitForm(values, this.props.history);
-                setSubmitting(false);
-              }}
-              validationSchema={LoginSchema}
-            >
-              {/* {this.showForm()}            */}
-              {props => this.showForm(props)}
-            </Formik>
-            <p class="mb-1">
-              <a href="forgot-password.html">I forgot my password</a>
-            </p>
-            <p class="mb-0">
-              <Link to="/register">Register a new membership</Link>
-            </p>
+      <div class="login-page">
+        <div className="register-box">
+          <div className="register-logo">
+            <a href="../../index2.html">
+              <b>Basic</b>POS
+            </a>
           </div>
-          {/* /.form-box */}
+          <div className="card">
+            <div className="card-body register-card-body">
+              <p className="login-box-msg">Sign in to start your session</p>
+
+              <Formik
+                initialValues={{
+                  username: "",
+                  password: ""
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  this.submitForm(values, this.props.history);
+                  setSubmitting(false);
+                }}
+                validationSchema={LoginSchema}
+              >
+                {/* {this.showForm()}            */}
+                {props => this.showForm(props)}
+              </Formik>
+              <p class="mb-1">
+                <Link to="/password/forgot">I forgot my password</Link>
+              </p>
+              <p class="mb-0">
+                <Link to="/register">Register a new membership</Link>
+              </p>
+            </div>
+            {/* /.form-box */}
+          </div>
+          {/* /.card */}
         </div>
-        {/* /.card */}
       </div>
     );
   }

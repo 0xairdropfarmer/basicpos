@@ -33,7 +33,7 @@ class Register extends Component {
       .then(res => {
         console.log(res.data.result);
         if (res.data.result === "success") {
-          swal("Success!", res.data.message, "success").then(value => {
+          swal("Success!", res.data.message, "warning").then(value => {
             history.push("/login");
           });
         } else if (res.data.result === "error") {
@@ -160,36 +160,37 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="register-box">
-        <div className="register-logo">
-          <a href="../../index2.html">
-            <b>Basic</b>POS
-          </a>
-        </div>
-        <div className="card">
-          <div className="card-body register-card-body">
-            <p className="login-box-msg">Register a new membership</p>
-
-            <Formik
-              initialValues={{
-                fullname: "",
-                email: "",
-                password: "",
-                confirm_password: ""
-              }}
-              onSubmit={(values, { setSubmitting }) => {
-                this.submitForm(values, this.props.history);
-                setSubmitting(false);
-              }}
-              validationSchema={SignupSchema}
-            >
-              {/* {this.showForm()}            */}
-              {props => this.showForm(props)}
-            </Formik>
+      <div className="register-page">
+        <div className="register-box">
+          <div className="register-logo">
+            <a href="../../index2.html">
+              <b>Basic</b>POS
+            </a>
           </div>
-          {/* /.form-box */}
+          <div className="card">
+            <div className="card-body register-card-body">
+              <p className="login-box-msg">Register a new membership</p>
+
+              <Formik
+                initialValues={{
+                  fullname: "",
+                  email: "",
+                  password: "",
+                  confirm_password: ""
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  this.submitForm(values, this.props.history);
+                  setSubmitting(false);
+                }}
+                validationSchema={SignupSchema}
+              >
+                {props => this.showForm(props)}
+              </Formik>
+            </div>
+            {/* /.form-box */}
+          </div>
+          {/* /.card */}
         </div>
-        {/* /.card */}
       </div>
     );
   }
