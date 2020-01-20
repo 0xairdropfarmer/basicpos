@@ -20,7 +20,11 @@ class Login extends Component {
       alert: null
     };
   }
-
+  componentDidMount() {
+    if (localStorage.getItem("TOKEN_KEY") != null) {
+        return this.props.history.goBack();
+     }
+   }
   submitForm = (values, history) => {
     console.log(values);
     axios
